@@ -19,6 +19,7 @@ export default class Queue<T> {
 
     enqueue(item: T): void {
         const node = new Node(item);
+
         if (this.tail) {
             this.tail.next = node;
         } else {
@@ -31,7 +32,6 @@ export default class Queue<T> {
 
     deque(): T | undefined {
         const node = this.head;
-
         if (!node) {
             return undefined;
         }
@@ -57,7 +57,7 @@ export default class Queue<T> {
         const arr = [];
         let node = this.head;
 
-        while (node !== undefined) {
+        while (node) {
             arr.push(node.value);
             node = node.next;
         }

@@ -20,6 +20,7 @@ export default class DoublyLinkedList<T> {
 
     prepend(item: T): void {
         const node = new Node(item);
+
         if (this.head) {
             const prevHead = this.head;
             this.head = node;
@@ -29,7 +30,7 @@ export default class DoublyLinkedList<T> {
             this.head = node;
         }
 
-        if (node.next === undefined) {
+        if (!node.next) {
             this.tail = node;
         }
 
@@ -38,7 +39,7 @@ export default class DoublyLinkedList<T> {
 
     insertAt(item: T, idx: number): void {
         let nodeAtIdx = this.getNodeByIndex(idx);
-        if (nodeAtIdx === undefined) {
+        if (!nodeAtIdx) {
             throw new Error(`Node not found at index ${idx}`);
         }
 
@@ -48,7 +49,7 @@ export default class DoublyLinkedList<T> {
         node.next = nodeAtIdx;
         nodeAtIdx.prev = node;
 
-        if (node.next === undefined) {
+        if (!node.next) {
             this.tail = node;
         }
 
@@ -57,6 +58,7 @@ export default class DoublyLinkedList<T> {
 
     append(item: T): void {
         const node = new Node(item);
+
         if (!this.tail) {
             this.head = node;
         } else {
@@ -71,7 +73,7 @@ export default class DoublyLinkedList<T> {
 
     remove(item: T): T | undefined {
         const node = this.getNodeByValue(item);
-        if (node === undefined) {
+        if (!node) {
             return undefined;
         }
 
@@ -86,7 +88,7 @@ export default class DoublyLinkedList<T> {
 
     removeAt(idx: number): T | undefined {
         const node = this.getNodeByIndex(idx);
-        if (node === undefined) {
+        if (!node) {
             return undefined;
         }
 
@@ -99,7 +101,7 @@ export default class DoublyLinkedList<T> {
         const arr = [];
         let node = this.head;
 
-        while (node !== undefined) {
+        while (node) {
             arr.push(node.value);
             node = node.next;
         }
@@ -113,7 +115,7 @@ export default class DoublyLinkedList<T> {
         }
 
         let node: Node<T> | undefined = this.head;
-        while (node !== undefined && node.value !== item) {
+        while (node && node.value !== item) {
             node = node.next;
         }
 
@@ -124,7 +126,7 @@ export default class DoublyLinkedList<T> {
         let node: Node<T> | undefined = this.head;
         let index = 0;
 
-        while (node !== undefined) {
+        while (node) {
             if (index === i) {
                 return node;
             }

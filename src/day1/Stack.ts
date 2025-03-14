@@ -18,6 +18,7 @@ export default class Stack<T> {
 
     push(item: T): void {
         const node = new Node(item);
+
         if (this.head) {
             node.prev = this.head;
             this.head = node;
@@ -30,8 +31,7 @@ export default class Stack<T> {
 
     pop(): T | undefined {
         const node = this.head;
-
-        if (node === undefined) {
+        if (!node) {
             return undefined;
         }
 
@@ -50,7 +50,7 @@ export default class Stack<T> {
         const arr = [];
         let node = this.head;
 
-        while (node !== undefined) {
+        while (node) {
             arr.push(node.value);
             node = node.prev;
         }
