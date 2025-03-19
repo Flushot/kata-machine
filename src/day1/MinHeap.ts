@@ -70,8 +70,8 @@ export default class MinHeap {
             this.data[rightIdx] = val
 
             this.heapifyDown(rightIdx);
-        } else if (rightVal > leftVal && val > leftVal) {
-            // left < val < right
+        } else if (rightVal >= leftVal && val >= leftVal) {
+            // left <= val <= right
 
             // Swap value with left
             this.data[idx] = leftVal;

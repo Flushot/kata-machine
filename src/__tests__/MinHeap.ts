@@ -10,13 +10,15 @@ test("min heap", function () {
     heap.insert(69);
     heap.insert(420);
     heap.insert(4);
+    heap.insert(4);
     heap.insert(1);
     heap.insert(8);
     heap.insert(7);
 
-    expect(heap.length).toEqual(8);
+    expect(heap.length).toEqual(9);
     expect(heap.delete()).toEqual(1);
     expect(heap.delete()).toEqual(3);
+    expect(heap.delete()).toEqual(4);
     expect(heap.delete()).toEqual(4);
     expect(heap.delete()).toEqual(5);
     expect(heap.length).toEqual(4);
